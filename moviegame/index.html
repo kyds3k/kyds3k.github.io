@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Nerd Trivia - Movie Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+  <link href="//fonts.googleapis.com/css?family=Play|VT323|Titillium+Web&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//unpkg.com/augmented-ui/augmented.css">
+  <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+  <style>
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .movie-stage {
+      width: 100%;
+    }
+
+    .movie-stage p {
+      margin: 20px 0;
+      font-size: 30px;
+    }
+
+    .cta {
+      font-size: 20px;
+      display: none;
+      transition: text-shadow 1s ease;  
+      background: none;
+      color: #ccfcff;
+      text-decoration: none;
+      position: relative;
+      animation: fadepulse 3s linear infinite;
+      z-index: 1;
+      cursor: url('/images/cyber-click.gif'), auto;
+      --aug-border: 1px;
+      --aug-tr: 20px;
+      --aug-bl: 20px;
+      --aug-border-bg: #ccfcff;
+      --aug-border-fallback-color: #ccfcff;
+      border:none;
+      text-shadow: 0px 0px 9px #365063, 0px 0px 15px #365063, 0px 0px 5px #365063;;  
+      transition: all 1s ease;
+    }
+
+    .posters-frame {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      margin-top: 2em;
+    }
+
+    .posters-frame .poster {
+      max-width: 20%;
+      position: relative;
+    }
+
+    .posters-frame .poster.symbol {
+      max-width: 20%;
+      padding: 0 .5em;
+    }
+
+    .abs-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .symbol {
+      font-size: 0;      
+      opacity: 0;
+      transition: all .5s ease;
+    }
+
+    .symbol.active {
+      font-size: 5em;
+      opacity: 1;
+    }
+
+    .movie-stage .movie-answer {
+      font-size: 3em;
+      text-align: center;
+      margin: 0 auto 1em;
+    }
+
+    .reload-container {
+      text-align: center;
+    }
+
+    .reload {
+      font-size: 2em;
+    }
+
+    .credit p {
+      font-size: .75em;
+      text-align: right;
+      margin: 2em 0 0;
+    }
+
+    .credit img {
+      max-width: 20%;
+      margin-left: .3em;
+    }
+
+    @media screen and (max-width: 768px) {
+      .movie-stage p {
+        font-size: 1.25em;
+      }
+
+      .posters-frame .poster {
+        max-width: 30%;
+      }
+
+    .movie-stage .movie-answer {
+      font-size: 1.25em;
+    }
+
+      .credit p {
+        font-size: .5em;
+      }
+
+    }
+
+
+  </style>
+</head>
+
+<body class="blue">
+  <div class="container">
+    <div class="screen-overlay"></div>
+    <div class="interface">
+      <div class="movie-stage card" augmented-ui="tr-clip-x r-clip bl-clip exe">
+        <p class="movie-clue"></p>
+        <a class="cta reveal" href="#">Click to reveal the answer</a>
+        <div class="posters-frame">
+          <div class="poster image poster-1"></div>
+          <div class="poster symbol abs-center">+</div>
+          <div class="poster image poster-2"></div>
+        </div>
+        <div class="equals symbol abs-center">=</div>
+        <p class="movie-answer"></p>
+        <div class="reload-container">
+          <a class="cta reload" href="#">Load another one!</a>
+        </div>
+        <div class="credit">
+          <p>Images and some movie info provided by <a href="https://themoviedb.org" target="_blank"><img src="/images/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg" alt="The Movie DB"></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/typeit@6.1.1/dist/typeit.min.js" />
+    </script>
+  <script>
+    
+    let movies = [];
+    let done = [];
+    let questionType, answerType, questionIndex, movieQuestion, movieOne, movieTwo, movieThree, movieAnswer, questionText, questionAnswer;
+
+    function loadMovies() {
+      localStorage.clear();
+      fetch('/js/moviegame.json').then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject(response);
+        }
+      }).then(function (data) {
+
+        // Store the post data to a variable
+        movies = data;
+        questionGet(data);
+      }).catch(function (error) {
+        console.warn(error);
+      });      
+    }
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    function questionGet(movies) {
+      let movieCount = movies.length;
+      let validIndex = false;
+      while (!validIndex) {
+        questionIndex = getRandomInt(movieCount);
+        let goodNum = done.indexOf(questionIndex);
+        if (goodNum < 0) {
+          done.push(questionIndex);
+          console.log(done);
+          break;
+        }
+      }
+      movieQuestion = movies[questionIndex].clue;
+      movieAnswer = movies[questionIndex].answer;
+      questionText = document.getElementsByClassName('movie-clue');
+      questionAnswer = document.getElementsByClassName('movie-answer');
+      
+      // Get the movie posters
+      movieOne = movies[questionIndex].movieOne;
+      movieTwo = movies[questionIndex].movieTwo;
+      if (movies[questionIndex].movieThree) {
+        movieThree = movies[questionIndex].movieThree;
+        //console.log(movieThree);
+      }
+      
+      fetch(`https://api.themoviedb.org/3/search/movie?api_key=d35764d11cf6ee99696bb5b8a605a3c9&query=${movieOne}`).then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject(response);
+        }
+      }).then(function (dataOne) {
+
+        // Store the post data to local storage
+        let pathOne = dataOne.results[0].poster_path;
+        let titleOne = dataOne.results[0].original_title;
+        localStorage.setItem('poster-one', 'https://image.tmdb.org/t/p/w500' + pathOne);
+        localStorage.setItem('title-one', titleOne);
+
+        // Fetch another API
+        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=d35764d11cf6ee99696bb5b8a605a3c9&query=${movieTwo}`);
+
+      }).then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject(response);
+        }
+      }).then(function (dataTwo) {
+        // Store the post data to local storage
+        let pathTwo = dataTwo.results[0].poster_path;
+        let titleTwo = dataTwo.results[0].original_title;
+          localStorage.setItem('poster-two', 'https://image.tmdb.org/t/p/w500' + pathTwo)
+          localStorage.setItem('title-two', titleTwo);
+
+        // third fetch
+        // Fetch another API
+        if (movieThree != undefined) { 
+          return fetch(`https://api.themoviedb.org/3/search/movie?api_key=d35764d11cf6ee99696bb5b8a605a3c9&query=${movieThree}`);
+        }
+
+      }).then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject(response);
+        }
+      }).then(function (dataThree) {
+        // Store the post data to local storage
+        console.log('movie three is ' + movieThree);
+        if (movieThree != undefined) { 
+          //console.log(movieThree);
+          let pathThree = dataThree.results[0].poster_path;
+          let titleThree = dataThree.results[0].original_title;
+          localStorage.setItem('poster-three', 'https://image.tmdb.org/t/p/w500' + pathThree)
+          localStorage.setItem('title-three', titleThree);        
+        }
+
+
+      }).catch(function (error) {
+        console.warn(error);
+      });
+
+      questionFill(movieQuestion);
+      answerFill(movieAnswer);      
+    }
+
+    function questionFill(movieQuestion) {
+      questionType = new TypeIt(".movie-clue", {
+        strings: movieQuestion,
+        speed: 50,
+        waitUntilVisible: false,
+        afterComplete: instance => {
+          $(".movie-clue")
+            .find(".ti-cursor")
+            .addClass("is-hidden");
+          $('.reveal').fadeIn();
+        }
+      });
+      questionType.go();
+    }
+
+    function answerFill(movieAnswer) {
+      // Save the answer in local storage, if anybody wants to cheat and look there then they're a terrible person and trivia player
+      localStorage.setItem('movie-answer', movieAnswer);
+    }
+
+  //Click button to reveal answer
+  document.addEventListener('click', function (event) {
+    if (!event.target.matches('.reveal')) return;
+    event.preventDefault();
+    let imageOne = localStorage.getItem('poster-one');
+    let imageTwo = localStorage.getItem('poster-two');
+    let titleOne = localStorage.getItem('title-one');
+    let titleTwo = localStorage.getItem('title-two');
+
+    $('.posters-frame .poster-1').html(`<img src="${imageOne}" alt="${titleOne}">`);
+    $('.poster.symbol').addClass('active');
+    $('.posters-frame .poster-2').html(`<img src="${imageTwo}" alt="${titleTwo}">`);
+    if (localStorage.getItem('poster-three') != null) {
+      let imageThree = localStorage.getItem('poster-three');
+      let titleThree = localStorage.getItem('title-three');
+      $('.poster.symbol').addClass('active');
+      $('.posters-frame').append(`<div class="poster symbol abs-center second">+</div><div class="poster poster-3"><img src="${imageThree}" alt="${titleThree}"></div>`);      
+      $('.poster.symbol').addClass('active');      
+    }    
+    $('.equals.symbol').toggleClass('active');
+    let answerContent = localStorage.getItem('movie-answer');
+    answerType = new TypeIt(".movie-answer", {
+      strings: answerContent,
+      speed: 50,
+      waitUntilVisible: false,
+      afterComplete: instance => {
+        $(".movie-answer")
+          .find(".ti-cursor")
+          .addClass("is-hidden");
+        window.scrollTo(0, document.body.scrollHeight);              
+        $(".reload").fadeIn();
+      }
+    });
+    answerType.go();
+  }, false);    
+
+  //Click button to load a new question
+  document.addEventListener('click', function (event) {
+  if (!event.target.matches('.reload')) return;
+    event.preventDefault();
+    questionType = new TypeIt(".movie-clue", {
+      speed: 50
+    });
+    questionType.delete(null);
+    questionType.go();
+    answerType = new TypeIt(".movie-answer", {
+      speed: 50        
+    });
+    answerType.delete(null);
+    $('.image').fadeOut().html('').fadeIn();
+    $('.symbol').toggleClass('active');
+    $('.cta').fadeOut();
+    localStorage.clear();
+    movieThree = undefined;
+    $('.poster-3, .symbol.second').remove();
+    setTimeout(() => {
+      loadMovies();
+    }, 1500);
+  }, false);      
+
+  
+  loadMovies();
+
+  </script>
+</body>
+
+</html>

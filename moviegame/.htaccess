@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Access to /kyds3k/moviegame"
+AuthUserFile /kunden/homepages/20/d402565830/htpasswd
+Require user kyds3k

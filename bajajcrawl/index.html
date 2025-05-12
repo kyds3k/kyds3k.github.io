@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tickets Sold</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 90%;
+      padding: 1rem;
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      animation: fadeSlideUp 1s ease-out;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .iframe-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 62%; /* Maintains 600x371 aspect ratio */
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .iframe-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎟 Tickets Sold</h1>
+    <div class="iframe-wrapper">
+      <iframe 
+        seamless 
+        scrolling="no" 
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS1tLyFXtI1ZKLtYDgXLlpfTtUaYchnqLMJgG2SEKd_gw6gq3wghyogy4dbXFKYlw/pubchart?oid=1113606259&amp;format=interactive">
+      </iframe>
+    </div>
+  </div>
+</body>
+</html>

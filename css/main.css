@@ -1,0 +1,839 @@
+/*!
+ * Adam Darby - Portfolio v0.0.1
+ * My personal portfolio/resume page
+ * (c) 2020 Adam Darby
+ * MIT License
+ * https://github.com/kyds3k/portfolio
+ */
+
+/* ***********************************
+ *
+ *    Ire's CSS Reset & Base
+ *
+ * *********************************** */
+/* Reset margin, padding, border
+ * *********************************** */
+/* line 10, src/sass/components/_reset.scss */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+span,
+em,
+small,
+strong,
+sub,
+sup,
+mark,
+del,
+ins,
+strike,
+abbr,
+dfn,
+blockquote,
+q,
+cite,
+code,
+pre,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+div,
+section,
+article,
+main,
+aside,
+nav,
+header,
+hgroup,
+footer,
+img,
+figure,
+figcaption,
+address,
+time,
+audio,
+video,
+canvas,
+iframe,
+details,
+summary,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Typography
+  * *********************************** */
+/* line 83, src/sass/components/_reset.scss */
+html {
+  font-size: 62.5%;
+}
+
+/* line 87, src/sass/components/_reset.scss */
+body {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+/* line 92, src/sass/components/_reset.scss */
+* {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Layout
+  * *********************************** */
+/* line 101, src/sass/components/_reset.scss */
+article,
+aside,
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+/* line 111, src/sass/components/_reset.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 115, src/sass/components/_reset.scss */
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* Elements
+  * *********************************** */
+/* line 123, src/sass/components/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 128, src/sass/components/_reset.scss */
+ol,
+ul {
+  list-style: none;
+}
+
+/* line 133, src/sass/components/_reset.scss */
+img,
+video {
+  max-width: 100%;
+}
+
+/* line 138, src/sass/components/_reset.scss */
+img {
+  border-style: none;
+}
+
+/* line 142, src/sass/components/_reset.scss */
+blockquote,
+q {
+  quotes: none;
+}
+
+/* line 147, src/sass/components/_reset.scss */
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+  content: "";
+  content: none;
+}
+
+/* Attributes & states
+  * *********************************** */
+/* line 158, src/sass/components/_reset.scss */
+[hidden] {
+  display: none !important;
+}
+
+/* line 162, src/sass/components/_reset.scss */
+[disabled] {
+  cursor: not-allowed;
+}
+
+/* line 166, src/sass/components/_reset.scss */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Utility classes
+  * *********************************** */
+/* line 173, src/sass/components/_reset.scss */
+.sr-only {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  left: -9999px;
+  top: -9999px;
+}
+
+/* line 8, src/sass/components/_variables.scss */
+.blue {
+  --shade-1: #ccfcff;
+  --shade-2: #6f8fa3;
+  --shade-3: #365063;
+  --shade-4: #18293a;
+  --shade-5: #141824;
+}
+
+/* line 15, src/sass/components/_variables.scss */
+.green {
+  --shade-1: #32c932;
+  --shade-2: #114411;
+  --shade-3: #0e350e;
+  --shade-4: #092109;
+  --shade-5: #061606;
+}
+
+/* line 30, src/sass/components/_variables.scss */
+.error-msg {
+  color: #f40000;
+}
+
+/* line 38, src/sass/components/_variables.scss */
+.is-hidden[style] {
+  display: none !important;
+}
+
+/* line 42, src/sass/components/_variables.scss */
+.center-v {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+/* line 48, src/sass/components/_variables.scss */
+.center-h {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+/* line 54, src/sass/components/_variables.scss */
+.center-vh {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3D(-50%, -50%, 0);
+      -ms-transform: translate3D(-50%, -50%, 0);
+          transform: translate3D(-50%, -50%, 0);
+}
+
+/* line 61, src/sass/components/_variables.scss */
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* line 67, src/sass/components/_variables.scss */
+.desktop-only {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 67, src/sass/components/_variables.scss */
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* line 74, src/sass/components/_variables.scss */
+.mobile-only {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  /* line 74, src/sass/components/_variables.scss */
+  .mobile-only {
+    display: block;
+  }
+}
+
+@-webkit-keyframes expand {
+  0% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  100% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1);
+  }
+}
+
+@keyframes expand {
+  0% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  100% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1);
+  }
+}
+
+@-webkit-keyframes fadepulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadepulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes eq-line {
+  0% {
+    background-position: 0;
+  }
+  50% {
+  }
+}
+
+@keyframes eq-line {
+  0% {
+    background-position: 0;
+  }
+  50% {
+  }
+}
+
+/* line 1, src/sass/components/_base.scss */
+body {
+  font-size: 16px;
+  color: var(--shade-1);
+  font-family: "Titillium Web", sans-serif;
+  background-color: var(--shade-5);
+  -webkit-transition: background-color 1s ease;
+  transition: background-color 1s ease;
+}
+
+/* line 1, src/sass/components/_typography.scss */
+h1, h2, h3, h4, p, a {
+  text-shadow: 0px 0px 9px var(--shade-3), 0px 0px 15px var(--shade-3), 0px 0px 5px var(--shade-3);
+  -webkit-transition: text-shadow 1s ease;
+  transition: text-shadow 1s ease;
+}
+
+/* line 6, src/sass/components/_typography.scss */
+h1 {
+  font-size: 2em;
+}
+
+/* line 10, src/sass/components/_typography.scss */
+h2 {
+  font-size: 1.5em;
+}
+
+/* line 14, src/sass/components/_typography.scss */
+h3 {
+  font-size: 1.125em;
+  margin-bottom: 0.5em;
+}
+
+/* line 19, src/sass/components/_typography.scss */
+h4 {
+  font-size: 1em;
+  line-height: 1em;
+}
+
+/* line 24, src/sass/components/_typography.scss */
+p {
+  font-family: "Play", sans-serif;
+  font-size: 1em;
+}
+
+/* line 29, src/sass/components/_typography.scss */
+::-moz-selection {
+  color: var(--shade-5);
+  background-color: var(--shade-1);
+}
+::selection {
+  color: var(--shade-5);
+  background-color: var(--shade-1);
+}
+
+/* line 34, src/sass/components/_typography.scss */
+a,
+a:link,
+a:visited {
+  color: var(--shade-1);
+  text-decoration: none;
+  position: relative;
+  -webkit-animation: fadepulse 3s linear infinite;
+          animation: fadepulse 3s linear infinite;
+  z-index: 1;
+  cursor: url("/images/cyber-click.gif"), auto;
+}
+
+/* line 44, src/sass/components/_typography.scss */
+a:after,
+a:link:after,
+a:visited:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.125rem;
+  bottom: 0;
+  left: 0;
+  background: -webkit-linear-gradient(left, var(--shade-3), var(--shade-1));
+  background: linear-gradient(to right, var(--shade-3), var(--shade-1));
+  background-size: 400% 400%;
+  -webkit-animation: gradientBG 15s ease infinite;
+          animation: gradientBG 15s ease infinite;
+  -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: top right;
+      -ms-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+/* line 60, src/sass/components/_typography.scss */
+a:hover:after,
+a:link:hover:after,
+a:visited:hover:after {
+  -webkit-transform-origin: top left;
+      -ms-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+/* line 2, src/sass/components/_layout.scss */
+.container {
+  position: relative;
+}
+
+/* line 4, src/sass/components/_layout.scss */
+.container .screen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* line 15, src/sass/components/_layout.scss */
+.interface {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: no-wrap;
+      -ms-flex-wrap: no-wrap;
+          flex-wrap: no-wrap;
+  padding: 1em;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* line 26, src/sass/components/_layout.scss */
+.sector-one {
+  width: 40%;
+}
+
+/* line 30, src/sass/components/_layout.scss */
+.sector-two {
+  width: 50%;
+}
+
+/* line 36, src/sass/components/_layout.scss */
+.hero {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+/* line 41, src/sass/components/_layout.scss */
+.hero .video {
+  padding: 0 2em;
+}
+
+/* line 45, src/sass/components/_layout.scss */
+.hero .video-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+  mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+}
+
+/* line 51, src/sass/components/_layout.scss */
+.hero .video-circle video {
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+  width: 190px;
+  margin-top: -40%;
+}
+
+/* line 60, src/sass/components/_layout.scss */
+.contact h3 {
+  text-transform: uppercase;
+}
+
+/* line 64, src/sass/components/_layout.scss */
+.contact li {
+  margin-bottom: 0.5em;
+}
+
+/* line 70, src/sass/components/_layout.scss */
+.skills h3 {
+  text-transform: uppercase;
+}
+
+/* line 76, src/sass/components/_layout.scss */
+.skillset li {
+  position: relative;
+  width: 50%;
+  margin-bottom: 0.5em;
+  text-shadow: 0px 0px 9px var(--shade-3), 0px 0px 15px var(--shade-3), 0px 0px 5px var(--shade-3);
+}
+
+/* line 82, src/sass/components/_layout.scss */
+.skillset li .skill {
+  display: block;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+  left: 60%;
+  height: 50%;
+  width: 0%;
+  background: -webkit-linear-gradient(left, var(--shade-3), var(--shade-1));
+  background: linear-gradient(to right, var(--shade-3), var(--shade-1));
+  -webkit-transition: width 0.5s ease;
+  transition: width 0.5s ease;
+}
+
+.projects h2 {
+  text-transform: uppercase;
+  margin-bottom: 2em;
+}
+
+.projects ul li {
+  margin: 2em 0;
+}
+
+/* line 98, src/sass/components/_layout.scss */
+.cv h2 {
+  text-transform: uppercase;
+}
+
+/* line 103, src/sass/components/_layout.scss */
+.experience {
+  margin: 2em 0;
+}
+
+/* line 106, src/sass/components/_layout.scss */
+.experience h3 {
+  color: var(--shade-2);
+  margin-bottom: 0.5em;
+}
+
+/* line 111, src/sass/components/_layout.scss */
+.experience h4 {
+  line-height: 1.125em;
+}
+
+/* line 115, src/sass/components/_layout.scss */
+.experience p {
+  margin-top: 0.5em;
+}
+
+@media only screen and (max-width: 1024px) {
+  /* line 121, src/sass/components/_layout.scss */
+  .interface {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
+  }
+  /* line 127, src/sass/components/_layout.scss */
+  .sector-one,
+  .sector-two {
+    width: 100%;
+  }
+  /* line 132, src/sass/components/_layout.scss */
+  .hero {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  /* line 136, src/sass/components/_layout.scss */
+  .titles {
+    padding-left: 1em;
+  }
+  /* line 140, src/sass/components/_layout.scss */
+  .skillset {
+    margin-bottom: 0;
+  }
+  /* line 145, src/sass/components/_layout.scss */
+  .scrobble-sector .album-image {
+    width: 50%;
+  }
+  /* line 152, src/sass/components/_layout.scss */
+  .skillset li .skill {
+    left: 73%;
+  }
+}
+
+/* line 1, src/sass/components/_cyber.scss */
+.card {
+  position: relative;
+  margin: 0.625em 0.75rem 2rem;
+  padding: 2rem;
+  --aug-border: 1px;
+  --aug-tr: 20px;
+  --aug-bl: 20px;
+  --aug-border-bg: var(--shade-1);
+  --aug-border-fallback-color: var(--shade-1);
+  -webkit-transform: scaleY(0);
+      -ms-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-animation: expand 0.25s linear 2s forwards;
+          animation: expand 0.25s linear 2s forwards;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 767px) {
+  /* line 16, src/sass/components/_cyber.scss */
+  .card {
+    margin: 0.625rem 0 1.5rem;
+  }
+}
+
+/* line 3, src/sass/components/_scrobbler.scss */
+.scrobble-sector .now-playing {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 7, src/sass/components/_scrobbler.scss */
+.scrobble-sector .now-playing a {
+  -webkit-animation: none;
+          animation: none;
+}
+
+/* line 13, src/sass/components/_scrobbler.scss */
+.scrobble-sector h4 {
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
+
+/* line 18, src/sass/components/_scrobbler.scss */
+.scrobble-sector .album-image {
+  padding-right: 1.5em;
+  width: 15%;
+}
+
+/* line 21, src/sass/components/_scrobbler.scss */
+.scrobble-sector .album-image img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  width: 100%;
+}
+
+/* line 27, src/sass/components/_scrobbler.scss */
+.scrobble-sector .track-info {
+  width: 85%;
+}
+
+/* line 31, src/sass/components/_scrobbler.scss */
+.scrobble-sector .current-track {
+  margin-bottom: 0;
+  line-height: 1.25em;
+}
+
+/* line 36, src/sass/components/_scrobbler.scss */
+.scrobble-sector .current-artist {
+  font-size: 0.875em;
+  line-height: 1.25em;
+}
+
+/* line 41, src/sass/components/_scrobbler.scss */
+.scrobble-sector .eq-lines {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+/* line 46, src/sass/components/_scrobbler.scss */
+.scrobble-sector .eq-lines li {
+  width: 10px;
+  height: 50px;
+  position: relative;
+  margin: 0 0.25em;
+}
+
+/* line 52, src/sass/components/_scrobbler.scss */
+.scrobble-sector .eq-lines li .eq-line {
+  background: -webkit-linear-gradient(bottom, var(--shade-3), var(--shade-1));
+  background: linear-gradient(to top, var(--shade-3), var(--shade-1));
+  width: 10px;
+  height: 0;
+  -webkit-transition: height 0.4s ease;
+  transition: height 0.4s ease;
+  position: absolute;
+  bottom: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  /* line 66, src/sass/components/_scrobbler.scss */
+  .scrobble-sector .album-image {
+    width: 50%;
+  }
+}
+
+/* REGULAR SCANLINES SETTINGS */
+/* MOVING SCANLINE SETTINGS */
+/* MIXINS */
+/* CSS .scanlines CLASS */
+/* line 51, src/sass/vendors/_scanlines.scss */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+/* line 55, src/sass/vendors/_scanlines.scss */
+.scanlines:before, .scanlines:after {
+  display: block;
+  pointer-events: none;
+  content: "";
+  position: absolute;
+}
+
+/* line 64, src/sass/vendors/_scanlines.scss */
+.scanlines:before {
+  width: 100%;
+  height: 1px;
+  z-index: 2147483649;
+  background: rgba(20, 24, 36, 0.3);
+  opacity: 0.75;
+  -webkit-animation: scanline 6s linear infinite;
+          animation: scanline 6s linear infinite;
+}
+
+/* line 77, src/sass/vendors/_scanlines.scss */
+.scanlines:after {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2147483648;
+  background: -webkit-linear-gradient(top, transparent 50%, rgba(20, 24, 36, 0.3) 51%);
+  background: linear-gradient(to bottom, transparent 50%, rgba(20, 24, 36, 0.3) 51%);
+  background-size: 100% 2px;
+  -webkit-animation: scanlines 1s steps(30) infinite;
+          animation: scanlines 1s steps(30) infinite;
+}
+
+/* ANIMATE UNIQUE SCANLINE */
+@-webkit-keyframes scanline {
+  0% {
+    -webkit-transform: translate3d(0, 200000%, 0);
+            transform: translate3d(0, 200000%, 0);
+  }
+}
+@keyframes scanline {
+  0% {
+    -webkit-transform: translate3d(0, 200000%, 0);
+            transform: translate3d(0, 200000%, 0);
+  }
+}
+
+@-webkit-keyframes scanlines {
+  0% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 50%;
+  }
+}

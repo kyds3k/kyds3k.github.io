@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Grimmjow Vignette</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+  <link href="//fonts.googleapis.com/css?family=Play|VT323|Titillium+Web&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//unpkg.com/augmented-ui/augmented.css">
+  <link rel="stylesheet" type="text/css" href="css/main.min.css">
+  <style>
+    .video-stage {
+      padding: 40px;
+      max-height: 90vh;
+    }
+  </style>
+</head>
+<body class="blue">
+  <div class="container">
+    <div class="screen-overlay"></div>
+    <div class="interface">
+      <div class="video-stage card" augmented-ui="tr-clip-x r-clip bl-clip exe">
+        <video controls id="grimmjow">
+          <source src="/video/vignette-grimmjow.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+  // Get the <video> element with id="myVideo"
+  var vid = document.getElementById("grimmjow");
+
+  // Assign an ontimeupdate event to the <video> element, and execute a function if the current playback position has changed
+  vid.ontimeupdate = function () { myFunction() };
+
+  function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+  }
+
+  function myFunction() {
+    let vidTime = vid.currentTime;
+    let buzz1 = false;
+    let buzz2 = false;
+    vidTime = round(vidTime);
+    if (vidTime == 2 && buzz1 == false) {
+      navigator.vibrate(3000);
+      buzz1 = true;
+    }
+
+    if (vidTime == 10 && buzz2 == false) {
+      navigator.vibrate(3000);
+      buzz1 = true;
+    }    
+
+  }
+  </script>
+</body>
+
+</html>

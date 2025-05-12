@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Adam Darby => Web Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+  <link href="https://fonts.googleapis.com/css?family=Play|VT323|Titillium+Web&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css">
+  <link rel="stylesheet" type="text/css" href="css/main.min.css">
+</head>
+
+<body class="blue">
+  <div class="container">
+    <div class="screen-overlay"></div>
+    <div class="interface">
+      <div class="sector-one">
+        <section class="hero card" augmented-ui="tr-clip l-clip bl-clip exe">
+          <div class="video desktop-only">
+            <div class="video-circle scanlines">
+              <video class="vid-me" loop muted playsinline poster="images/me-thumb.png">
+                <source src="video/nod-sm-bw.mp4" type="video/mp4">
+                <source src="video/nod-sm-bw.ogv" type="video/ogg">
+                <source src="video/nod-sm-bw.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+          <div class="titles">
+            <h1>Adam Darby</h1>
+            <h2>Web Developer</h2>
+            <h3>LVL 42</h3>
+          </div>
+        </section>
+        <section class="contact card" augmented-ui="tr-clip-x r-clip bl-clip exe">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:kyds3k@gmail.com">kyds3k@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/kyds3k/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            <li><a href="tel:+14049160919">+1 404 916 0919</a></li>
+          </ul>
+        </section>
+        <section class="skills card" augmented-ui="tr-clip r-clip bl-clip exe">
+          <h3>Skillset</h3>
+          <ul class="skillset">
+            <li>HTML5<span class="skill hide-text" data-percent="100">HTML5 skill percent</span></li>
+            <li>CSS3<span class="skill hide-text" data-percent="95">CSS3 skill percent</span></li>
+            <li>SASS<span class="skill hide-text" data-percent="95">SASS skill percent</span></li>
+            <li>Javascript<span class="skill hide-text" data-percent="80">Javascript skill percent</span></li>
+            <li>Shopify<span class="skill hide-text" data-percent="90">Shopify skill percent</span></li>
+            <li>React<span class="skill hide-text" data-percent="80">React skill percent</span></li>
+            <li>Wordpress<span class="skill hide-text" data-percent="70">Wordpress skill percent</span></li>
+            <li>Angular<span class="skill hide-text" data-percent="20">Angular skill percent</span></li>
+            <li>Vue<span class="skill hide-text" data-percent="20">Vue skill percent</span></li>
+            <li>Magento<span class="skill hide-text" data-percent="50">Magento skill percent</span></li>
+            <li>Drupal<span class="skill hide-text" data-percent="30">Drupal skill percent</span></li>
+            <li>PHP<span class="skill hide-text" data-percent="70">PHP skill percent</span></li>
+            <li>Laravel<span class="skill hide-text" data-percent="20">Laravel skill percent</span></li>
+            <li>Stack Overflow<span class="skill hide-text" data-percent="120">Stack Overflow skill percent</span></li>
+          </ul>
+        </section>
+        <section class="projects card">
+          <h2>Projects</h2>
+          <ul class="projects-list">
+            <li>
+              <h3><a rel="noopener noreferrer" target="_blank" href="https://nerdtrivia.wtf">Nerd Trivia 3000</a></h3>
+              <p>Trivia game inspired by the real-life trivia night that I hosted in Atlanta. Stack: NextJS, Tailwind, Pocketbase</p>
+              <p>Github: <a rel="noopener noreferrer" target="_blank" href="https://github.com/kyds3k/nerd-trivia-3000-v5">https://github.com/kyds3k/nerd-trivia-3000-v5</a></p>
+            </li>
+            <li>
+              <h3><a rel="noopener noreferrer" target="_blank" href="/moviegame">Movie Game</a></h3>
+              <p>Movie game also inspired by the IRL trivia night. Username is "kyds3k", password is "moviesmoviesmoviesmovies". Stack: HTML, CSS, Javascript</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+      <div class="sector-two">
+        <div class="scrobble-sector card" augmented-ui="tr-clip r-clip bl-clip exe">
+          <h4 class="audio-selection"></h4>
+          <div class="now-playing">
+            <div class="album-image scanlines">
+              <img src="images/cassette-smaller.gif" alt="animated cassette gif">
+            </div>
+            <div class="track-info">
+              <p class="current-track"></p>
+              <p class="current-artist"></p>
+              <div class="eq">
+                <ul class="eq-lines">
+                  <li><span class="eq-line hide-text">Equalizer 1</span></li>
+                  <li><span class="eq-line hide-text">Equalizer 2</span></li>
+                  <li><span class="eq-line hide-text">Equalizer 3</span></li>
+                  <li><span class="eq-line hide-text">Equalizer 4</span></li>
+                  <li><span class="eq-line hide-text">Equalizer 5</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cv card" augmented-ui="tr-clip t-clip bl-clip exe">
+          <h2>Experience</h2>
+          <a rel="noreferrer noopener" target="_blank" href="pdf/Adam_Darby_resume_11_2024.pdf" target="_blank" rel="noreferrer">(Download PDF)</a>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" href="https://helloelva.com">Elva</a></h3>
+            <h4>Senior Shopify Developer</h4>
+            <h4>11/2023 - current</h4>
+            <p class="description">I work with Figma files from designers to create, update, and maintain Shopify sites. I review and approve GitHub pull requests, and onboard new developers to projects.</p>
+            </p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://swedenunlimited.com">Sweden Unlimited</a></h3>
+            <h4>Shopify Developer</h4>
+            <h4>9/2022 - 11/2023</h4>
+            <p class="description">I took designs from Figma and spun them into fully functional Shopify sites. I wrote acceptance criteria for client work tickets, and reviewed and approved GitHub pull requests. Created an interactive interface that allows the client to place absolutely positioned elements on an informational Shopify section, and an interactive legend that allows the client to identify and determine which Shopify section a CTA will scroll to. Winner of the 2022 Sweden swag design contest.</p>
+            </p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://tomorrowagency.com">Tomorrow Agency</a></h3>
+            <h4>Tech Lead</h4>
+            <h4>9/2021 - 9/2022</h4>
+            <p class="description">I oversaw developers for several clients, reviewing and approving code pull requests, and implementing major and minor theme releases. I also created, maintained, and updated client Shopify sites as part of a team, writing Liquid templates and sections, and implementing CSS structure (mixins, SCSS directories).</p>
+            </p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://www.firstandthird.com">First+Third</a></h3>
+            <h4>Senior Web Developer</h4>
+            <h4>9/2020 - 9/2021</h4>
+            <p class="description">Maintained and update client sites, taking designs from Sketch/Abstract and making them into semantic html/css/js that is reusable, scalable, performant, accessible and works on all major browsers. (HTML, SCSS, Nunjucks, JavaScript)</p>
+            </p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://www.addevent.com">AddEvent</a>/<a rel="noopener noreferrer" target="_blank" href="https://appointmentthing.com">AppointmentThing</a></h3>
+            <h4>Senior Web Developer</h4>
+            <h4>2/2020 - 7/2020</h4>
+            <p class="description">Provided front-end code and UI design for site pages. Built an onboarding process for new customers, and implemented a search engine for the site's Help section. Teamed up with the back-end developer to streamline and improve code for the appointment-making process. (HTML, CSS, PHP, Javascript)</p>
+            </p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://www.fortyfour.com">Forty-Four Digital</a></h3>
+            <h4>Senior Web Developer</h4>
+            <h4>1/2016 - 11/2019</h4>
+            <h4>Atlanta, GA</h4>
+            <p class="description">I worked as part of the development team to design and implement solutions for
+              clients of all stripes. Magento, Drupal, Shopify, Wordpress, HTML5 , CSS / SCSS, Javascript / jQuery. Built and
+              updated Magento 1 and 2 pages for <a rel="noopener noreferrer" href="https://www.cokestore.com" target="_blank"
+                rel="noreferrer">Cokestore.com</a> and <a rel="noopener noreferrer" href="https://www.cocacolastore.fr" target="_blank"
+                rel="noreferrer">Coke France</a>.
+            </p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" href="https://news.cognizant.com/2020-08-25-Cognizant-to-Acquire-Tin-Roof-Software-to-Expand-Digital-Engineering-Services" target="_blank" rel="noreferrer">Tin Roof Software</a></h3>
+            <h4>Front-End Web Developer</h4>
+            <h4>12/2014 - 12/2015</h4>
+            <h4>Atlanta, GA</h4>
+            <p class="description">Provided the front-end code for an interface for CNN Go for DirecTV's set- top box
+              and the Amazon Fire Stick (Angular, HTML, CSS). Also helped build CNN's Great Big Story site (React).
+            </p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://www.adweek.com/agencyspy/publicis-groupe-acquires-engauge-merges-it-with-moxie-2/">Engauge / Moxie</a></h3>
+            <h4>User Interface Developer</h4>
+            <h4>03/2010 - 10/2014</h4>
+            <h4>Atlanta, GA</h4>
+            <p class="description">Created client websites, emails, and Facebook applications using HTML, CSS,
+              JavaScript, and the CodeIgniter framework. Started at Engauge and continued with Moxie after the
+              company was acquired in 2013.</p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" href="https://www.webmd.com" target="_blank" rel="noreferrer">WebMD Health Corp</a></h3>
+            <h4>Web Developer</h4>
+            <h4>11/2009 - 03/2010</h4>
+            <h4>Atlanta, GA</h4>
+            <p class="description">Worked with the design team and other developers to create and update features on the
+              WebMD site using HTML5, CSS3, and JavaScript.</p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" href="https://www.maybeinc.com" target="_blank" rel="noreferrer">Maybe For You, Inc.</a></h3>
+            <h4>Web Developer</h4>
+            <h4>03/2009 - 06/2009</h4>
+            <h4>Atlanta, GA</h4>
+            <p class="description">Created client sites and updated/upgraded existing client sites. Worked with another
+              agency to develop and update WAI-ARIA compliance for the College Board.</p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://www.cartoonnetwork.com">Cartoon Network</a></h3>
+            <h4>Web Developer</h4>
+            <h4>08/2008 - 03/2009</h4>
+            <h4>Atlanta, GA</h4>
+            <p class="description">Worked with designers and backed team to create the landing and launch website for
+              Cartoon Network's FusionFall MMO.</p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Super_Deluxe" target="_blank" rel="noreferrer">Superdeluxe</a>
+            </h3>
+            <h4>Web Developer</h4>
+            <h4>11/2006 - 5/2008</h4>
+            <h4>Atlanta, GA</h4>
+            <p class="description">Worked with development and design teams to launch the first iteration of Turner
+              Broadcasting's Superdeluxe site. Built a Yahoo desktop app to provide users with the latest videos and
+              artist page
+              updates.</p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://siris.com/portfolio/pgi">Premiere Global Services</a></h3>
+            <h4>Web Developer</h4>
+            <h4>11/2005 - 09/2006</h4>
+            <p class="description">Built custom websites and templates for salespeople and maintained PGI website.</p>
+          </section>
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Around_the_Rings">Around The Rings</a></h3>
+            <h4>Web Developer</h4>
+            <h4>8/2001 - 11/2005</h4>
+            <p class="description">Maintained the website and coded the monthly newsletter and other emails for an Olympics and world sport news organization.</p>
+          </section>          
+          <section class="experience">
+            <h3><a rel="noopener noreferrer" target="_blank" href="https://cnn.com">CNN.com</a></h3>
+            <h4>Web Developer</h4>
+            <h4>08/1999 - 07/2001</h4>
+            <p class="description">Updated the CNN.com site with breaking news stories, updated existing pieces, and
+              worked with the Japan, Italia, and Spanish sites.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/typeit@6.1.1/dist/typeit.min.js" />
+  </script>
+  <script src="js/site.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+html {
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(#142850 0%, #00a8cc 100%) no-repeat 50% 50% / 100%
+    100%;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+// =============================================
+// Layout - utility classes - AKD
+// =============================================
+
+.is-hidden[style] {
+  display: none !important;
+}
+
+.center-v {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.center-h {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.center-vh {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3D(-50%, -50%, 0);
+}
+
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.desktop-only {
+  display: none;
+  @media only screen and (min-width: 768px) {
+    display: block;
+  }
+}
+
+.mobile-only {
+  display: none;
+  @media only screen and (max-width: 767px) {
+    display: block;
+  }
+}
+
+.container {
+  position: relative;
+}
+
+.section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.sec-content {
+  width: 80%;
+  height: 80%;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 1.5em;
+}
+
+p {
+  font-size: 1em;
+  margin: 1.5em auto;
+}
+
+img {
+  max-width: 300px;
+}
+
+@media only screen and (max-width: 767px) {
+  h2 {
+    font-size: 1em;
+  }
+
+  p {
+    font-size: 0.75em;
+  }
+}

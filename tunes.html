@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="refresh" content="60">
+  <meta charset="utf-8" />
+  <title>Adam Darby => Front-end Web Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+  <link href="//fonts.googleapis.com/css?family=Play|VT323|Titillium+Web&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//unpkg.com/augmented-ui@2.0.0/augmented-ui.css">
+  <link rel="stylesheet" type="text/css" href="css/main.min.css">
+</head>
+
+<body class="blue" style="overflow: hidden; transition: none;">
+  <div class="container">
+    <div class="screen-overlay"></div>
+    <div class="interface">
+      <div class="sector-two">
+        <div class="scrobble-sector card" augmented-ui="tr-clip r-clip bl-clip exe">
+          <h4 class="audio-selection"></h4>
+          <div class="now-playing">
+            <div class="album-image scanlines">
+              <img src="images/cassette-smaller.gif" alt="animated cassette gif">
+            </div>
+            <div class="track-info">
+              <p class="current-track"></p>
+              <p class="current-artist"></p>
+              <div class="eq">
+                <ul class="eq-lines">
+                  <li><span class="eq-line hide-text">Equalizer 1</span></li>
+                  <li><span class="eq-line hide-text">Equalizer 2</span></li>
+                  <li><span class="eq-line hide-text">Equalizer 3</span></li>
+                  <li><span class="eq-line hide-text">Equalizer 4</span></li>
+                  <li><span class="eq-line hide-text">Equalizer 5</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/typeit@6.1.1/dist/typeit.min.js" />
+  </script>
+  <script src="js/tunes.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keep the Score Utilities</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+    <script type="module" crossorigin src="./assets/index-ea6692a4.js"></script>
+    <link rel="stylesheet" href="./assets/index-0997fa4b.css">
+  </head>
+  <body class="bg-black text-white px-20 py-10">
+    <h1 class="text-4xl font-bold mb-10">Keep The Score Utilities</h1>
+    <div class="flex-col">
+      <div class="mr-20">
+        <div class="mb-10 team-add-container flex-col">
+          <h2 class="text-2xl mb-2">Add a Team</h2>
+          <div class="w-full flex gap-4">
+            <div>
+              <label class="mb-2 block" for="team-name">Team name</label>
+              <input class="p-1 rounded text-black mb-5 block" type="text" name="team-name" id="team-name" />
+            </div>
+            <div class="flex-col">
+              <label class="mb-2 block" for="team-image">Search for team image</label>
+              <input title="Gif search" class="p-1 rounded text-black mb-5 mr-2" type="text" name="team-image" id="gif-search" />
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded gifs-get" type="submit">Get gifs</button>              
+            </div>
+            <div class="flex-col">
+              <label class="mb-2 block" for="team-name">Team image</label>
+              <input class="p-1 rounded text-black mb-6" type="text" name="team-image" id="team-image" />              
+              <img src="https://media.tenor.com/30iGQ7phGQ4AAAAC/lazy-egg-lazy.gif" alt="Lazy egg" class="team-image-preview mb-6 max-w-xs" />              
+            </div>
+            <div class="w-full">
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded team-add block mt-[32px]" type="submit">Add Team</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-2xl mb-2">Team List</h2>
+        
+        <div class="wrapper">
+          <div class="tabs">
+            <div class="tab" data-round="1">
+              <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+              <label for="tab-1" class="tab-label bg-blue-500 border-r-2 border-blue-400">Round 1</label>
+              <div class="tab-content w-full flex gap-16">
+                <ul class="team-list w-1/2">
+                  
+                </ul>
+                <div class="score-submit">
+                  <button class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded round-submit" data-round="1">Submit Scores</button>
+                  <p class="submit-results mt-4" data-round="1"></p>
+                </div>
+              </div>
+            </div>
+            <div class="tab" data-round="2">
+              <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+              <label for="tab-2" class="tab-label bg-blue-500 border-r-2 border-blue-400">Round 2</label>
+              <div class="tab-content w-full flex gap-16">
+                <ul class="team-list w-1/2">
+                  
+                </ul>
+                <div class="score-submit">
+                  <button class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded round-submit" data-round="2">Submit Scores</button>
+                  <p class="submit-results mt-4" data-round="2"></p>
+                </div>                
+              </div>
+            </div>
+            <div class="tab" data-round="3">
+              <input type="radio" name="css-tabs" id="tab-3" class="tab-switch">
+              <label for="tab-3" class="tab-label bg-blue-500 border-r-2 border-blue-400">Round 3</label>
+              <div class="tab-content w-full flex gap-16">
+                <ul class="team-list w-1/2">
+                  
+                </ul>
+                <div class="score-submit">
+                  <button class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded round-submit" data-round="3">Submit Scores</button>
+                  <p class="submit-results mt-4" data-round="3"></p>
+                </div>                
+              </div>
+            </div>
+            <div class="tab" data-round="4">
+              <input type="radio" name="css-tabs" id="tab-4" class="tab-switch">
+              <label for="tab-4" class="tab-label bg-blue-500 border-r-2 border-blue-400">Round 4</label>
+              <div class="tab-content w-full flex gap-16">
+                <ul class="team-list w-1/2">
+                  
+                </ul>
+                <div class="score-submit">
+                  <button class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded round-submit" data-round="4">Submit Scores</button>
+                  <p class="submit-results mt-4" data-round="4"></p>
+                </div>
+              </div>
+            </div>            
+            <div class="tab" data-round="5">
+              <input type="radio" name="css-tabs" id="tab-5" class="tab-switch">
+              <label for="tab-5" class="tab-label bg-blue-500 border-r-2 border-blue-400">Round 5</label>
+              <div class="tab-content w-full flex gap-16">
+                <ul class="team-list w-1/2">
+                  
+                </ul>
+                <div class="score-submit">
+                  <button class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded round-submit" data-round="5">Submit Scores</button>
+                  <p class="submit-results mt-4" data-round="5"></p>
+                </div>                
+              </div>
+            </div>            
+            <div class="tab" data-round="6">
+              <input type="radio" name="css-tabs" id="tab-6" class="tab-switch">
+              <label for="tab-6" class="tab-label bg-blue-500 border-r-2 border-blue-400">Round 6</label>
+              <div class="tab-content w-full flex gap-16">
+                <ul class="team-list w-1/2">
+                  
+                </ul>
+                <div class="score-submit">
+                  <button class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded round-submit" data-round="6">Submit Scores</button>
+                  <p class="submit-results mt-4" data-round="6"></p>
+                </div>
+              </div>
+            </div>            
+          </div>
+          <!-- <div class="mb-10">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded board-get mb-8" type="submit">Get teams</button>
+            <ul class="team-list w-1/2 w-full">
+  
+            </ul>
+            <div class="flex flex-col">
+              <button class="transition-colors bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded score-update my-8 self-start" type="submit">DRAMATIC SCORE UPDATE</button>                    
+              <button class="transition-colors bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 self-start rounded teams-delete" type="submit">Delete selected teams</button>          
+            </div>
+          </div>         -->
+        </div>
+      </div>      
+    </div>
+
+    <div class="gifs-modal">
+      <div class="gifs-modal-content">
+        <span class="close absolute cursor-pointer">&times;</span>
+        <div class="gifs-modal-content-inner flex flex-wrap justify-start gap-2">
+          
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,219 @@
+.game {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1.5rem;
+}
+
+/* Password gate */
+.gate {
+  display: grid;
+  gap: 0.75rem;
+  margin: 15vh auto 0;
+  max-width: 26rem;
+}
+
+.gate[hidden] {
+  display: none;
+}
+
+.gate-error {
+  min-height: 1.4em;
+}
+
+/* Controls */
+input {
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: var(--shade-1);
+  font: inherit;
+  padding: 0.6rem 0.75rem;
+  width: 100%;
+}
+
+.cta {
+  background: transparent;
+  border: 1px solid var(--shade-1);
+  color: var(--shade-1);
+  cursor: url("/images/cyber-click.gif"), pointer;
+  font: inherit;
+  padding: 0.6rem 1rem;
+  text-shadow: var(--glow);
+}
+
+.cta:hover {
+  background: var(--shade-3);
+}
+
+.cta:disabled {
+  opacity: 0.5;
+}
+
+.cta[hidden],
+.guess[hidden] {
+  display: none;
+}
+
+/* Stage */
+.hud {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hud h1 {
+  font-size: 1.5em;
+}
+
+.status {
+  color: var(--muted);
+  flex: 1;
+}
+
+.clue {
+  font-size: 1.5em;
+  line-height: 1.35;
+  min-height: 4em;
+}
+
+.posters {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: calc(1.5rem + 12px) 0 1.5rem;
+}
+
+.poster {
+  align-items: center;
+  aspect-ratio: 2 / 3;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  display: flex;
+  flex: 0 1 200px;
+  font-size: 3em;
+  justify-content: center;
+  min-width: 0;
+  position: relative;
+}
+
+.poster img {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+}
+
+/* An animation, not a transition: preloaded posters can finish loading before
+   the browser has painted them at opacity 0, which would skip a transition. */
+.poster img.loaded {
+  animation: poster-fade 0.6s ease;
+  opacity: 1;
+}
+
+@keyframes poster-fade {
+  from { opacity: 0; }
+}
+
+.symbol {
+  flex: none;
+  font-size: 2em;
+}
+
+.answer {
+  font-size: 2em;
+  line-height: 1.2;
+  min-height: 1.2em;
+  text-align: center;
+}
+
+.guess {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.feedback {
+  margin-top: 0.5rem;
+  min-height: 1.4em;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.keys {
+  color: var(--muted);
+  display: none;
+  margin-top: 1rem;
+}
+
+.credit {
+  color: var(--muted);
+  font-size: 0.75em;
+  margin-top: 2rem;
+}
+
+.credit img {
+  display: inline-block;
+  margin-left: 0.3em;
+  vertical-align: middle;
+  width: 120px;
+}
+
+/* Host mode: readable from across the room */
+.host .game {
+  max-width: 1500px;
+}
+
+.host .clue {
+  font-size: clamp(1.75rem, 3.2vw, 3rem);
+}
+
+.host .answer {
+  font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+}
+
+.host .posters {
+  margin: calc(1rem + 12px) 0 1rem;
+}
+
+.host .poster {
+  flex-basis: min(280px, 24vh);
+}
+
+.host .clue {
+  min-height: 0;
+}
+
+.host .keys {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .game {
+    padding: 1rem;
+  }
+
+  .clue {
+    font-size: 1.2em;
+  }
+
+  .answer {
+    font-size: 1.5em;
+  }
+
+  .posters {
+    gap: 0.4rem;
+  }
+
+  .symbol {
+    font-size: 1.25em;
+  }
+}

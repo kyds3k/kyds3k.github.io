@@ -1,0 +1,4 @@
+.DS_Store
+
+# Movie Game answers in plain text. Only data.enc.json ships.
+moviegame/moviegame-data.json

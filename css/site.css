@@ -1,0 +1,472 @@
+/* Adam Darby - resume site. Side pages still use css/main.min.css. */
+
+/* Themes */
+.blue {
+  --shade-1: #ccfcff;
+  --shade-3: #365063;
+  --shade-5: #141824;
+  --muted: #8fb0c4;
+}
+
+.green {
+  --shade-1: #32c932;
+  --shade-3: #0e350e;
+  --shade-5: #061606;
+  --muted: #27a127;
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  --glow: 0 0 9px var(--shade-3), 0 0 15px var(--shade-3), 0 0 5px var(--shade-3);
+  background-color: var(--shade-5);
+  color: var(--shade-1);
+  font: 1rem/1.4 "Titillium Web", sans-serif;
+  text-shadow: var(--glow);
+  transition: background-color 1s ease;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 1.125em;
+  margin-bottom: 0.25em;
+}
+
+p {
+  font-family: "Play", sans-serif;
+}
+
+::selection {
+  background-color: var(--shade-1);
+  color: var(--shade-5);
+}
+
+a {
+  animation: fadepulse 3s linear infinite;
+  color: var(--shade-1);
+  cursor: url("/images/cyber-click.gif"), auto;
+  position: relative;
+  text-decoration: none;
+}
+
+a::after {
+  background: linear-gradient(to right, var(--shade-3), var(--shade-1));
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: top right;
+  transition: transform 0.2s;
+  width: 100%;
+}
+
+a:hover::after,
+a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: top left;
+}
+
+:focus-visible {
+  outline: 2px solid var(--shade-1);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Layout */
+.interface {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 1.5rem;
+}
+
+.sector {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+/* Clipped HUD cards: the card's background is the border, and ::before
+   repaints the same shape 1px smaller over it. */
+.card {
+  --cut: 20px;
+  --notch: 10px;
+  --notch-size: 60px;
+  --top-notch: 0 0;
+  --right-notch: 100% var(--cut);
+  --left-notch: 0 0;
+  animation: expand 0.25s linear 0.2s backwards;
+  background: var(--shade-1);
+  clip-path: var(--shape);
+  isolation: isolate;
+  overflow: hidden;
+  padding: 2rem;
+  position: relative;
+  --shape: polygon(
+    0 0,
+    var(--top-notch),
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    var(--right-notch),
+    100% 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut)),
+    var(--left-notch)
+  );
+}
+
+.card::before {
+  background: var(--shade-5);
+  clip-path: var(--shape);
+  content: "";
+  inset: 1px;
+  position: absolute;
+  transition: background-color 1s ease;
+  z-index: -1;
+}
+
+.notch-top {
+  --top-notch: calc(50% - var(--notch-size)) 0,
+    calc(50% - var(--notch-size) + var(--notch)) var(--notch),
+    calc(50% + var(--notch-size) - var(--notch)) var(--notch),
+    calc(50% + var(--notch-size)) 0;
+}
+
+.notch-right {
+  --right-notch: 100% calc(50% - var(--notch-size)),
+    calc(100% - var(--notch)) calc(50% - var(--notch-size) + var(--notch)),
+    calc(100% - var(--notch)) calc(50% + var(--notch-size) - var(--notch)),
+    100% calc(50% + var(--notch-size));
+}
+
+.notch-left {
+  --notch-size: 30px;
+  --left-notch: 0 calc(50% + var(--notch-size)),
+    var(--notch) calc(50% + var(--notch-size) - var(--notch)),
+    var(--notch) calc(50% - var(--notch-size) + var(--notch)),
+    0 calc(50% - var(--notch-size));
+}
+
+/* Hero */
+.hero {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+}
+
+.portrait {
+  border-radius: 50%;
+  flex: none;
+  height: 100px;
+  width: 100px;
+}
+
+.portrait-video {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.role {
+  font-family: inherit;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.level {
+  color: var(--muted);
+}
+
+/* Lists */
+.stack li {
+  margin-bottom: 0.5em;
+}
+
+.skills li {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 9rem 1fr;
+  margin-bottom: 0.5em;
+}
+
+.skills li::after {
+  animation: fill 0.5s ease calc(0.4s + var(--i) * 0.08s) backwards;
+  background: linear-gradient(to right, var(--shade-3), var(--shade-1));
+  content: "";
+  height: 0.6em;
+  width: calc(var(--level) * 1%);
+}
+
+.entry {
+  margin-top: 2em;
+}
+
+.entry p + p {
+  margin-top: 0.5em;
+}
+
+.job-meta {
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+/* Now playing */
+.track {
+  align-items: flex-start;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.theme-toggle {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  flex: none;
+  padding: 0;
+  width: 120px;
+}
+
+.album-art {
+  aspect-ratio: 1;
+  filter: grayscale(100%);
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.track-info {
+  min-width: 0;
+}
+
+.track-name {
+  line-height: 1.25;
+  min-height: 1.25em;
+}
+
+.track-artist {
+  font-size: 0.875em;
+  line-height: 1.25;
+  min-height: 1.25em;
+}
+
+.track-info a {
+  animation: none;
+}
+
+.typing::after {
+  animation: blink 0.8s steps(2) infinite;
+  content: "\258C";
+}
+
+.eq {
+  align-items: flex-end;
+  display: flex;
+  gap: 8px;
+  height: 50px;
+  margin-top: 0.5rem;
+}
+
+.eq i {
+  animation: eq 0.9s ease-in-out infinite alternate;
+  background: linear-gradient(to top, var(--shade-3), var(--shade-1));
+  height: 100%;
+  transform-origin: bottom;
+  width: 10px;
+}
+
+.eq i:nth-child(2) { animation-duration: 0.6s; animation-delay: -0.3s; }
+.eq i:nth-child(3) { animation-duration: 1.1s; animation-delay: -0.7s; }
+.eq i:nth-child(4) { animation-duration: 0.7s; animation-delay: -0.2s; }
+.eq i:nth-child(5) { animation-duration: 1s; animation-delay: -0.5s; }
+
+/* Scanlines */
+.scanlines {
+  overflow: hidden;
+  position: relative;
+}
+
+.scanlines::before,
+.scanlines::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.scanlines::before {
+  animation: scanline 6s linear infinite;
+  background: rgb(20 24 36 / 30%);
+  height: 1px;
+  opacity: 0.75;
+  width: 100%;
+}
+
+.scanlines::after {
+  animation: scanlines 1s steps(30) infinite;
+  background: linear-gradient(to bottom, transparent 50%, rgb(20 24 36 / 30%) 51%);
+  background-size: 100% 2px;
+  inset: 0;
+}
+
+/* Animation */
+@keyframes expand {
+  from { transform: scaleY(0); }
+}
+
+@keyframes fill {
+  from { width: 0; }
+}
+
+@keyframes fadepulse {
+  50% { opacity: 0.7; }
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+@keyframes eq {
+  from { transform: scaleY(0.15); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes scanline {
+  from { transform: translateY(200000%); }
+}
+
+@keyframes scanlines {
+  from { background-position: 0 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .eq i {
+    transform: scaleY(0.6);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .interface {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .interface {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .hero {
+    gap: 1.25rem;
+  }
+
+  .skills li {
+    gap: 0.5rem;
+    grid-template-columns: 7.5rem 1fr;
+  }
+
+  .theme-toggle {
+    width: 96px;
+  }
+}
+
+/* Print: plain and ink-friendly */
+@media print {
+  body.blue,
+  body.green {
+    --shade-1: #000;
+    --shade-5: #fff;
+    --muted: #444;
+    text-shadow: none;
+  }
+
+  .interface {
+    display: block;
+    padding: 0;
+  }
+
+  .card {
+    animation: none;
+    background: none;
+    clip-path: none;
+    padding: 0 0 1rem;
+  }
+
+  .card::before,
+  .now-playing,
+  .portrait,
+  .skills li::after {
+    display: none;
+  }
+
+  a {
+    animation: none;
+  }
+
+  h2 {
+    break-after: avoid;
+  }
+
+  .entry {
+    break-inside: avoid;
+  }
+}

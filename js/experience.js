@@ -159,7 +159,7 @@ export const jobs = [
     links: [
       {
         label: "Premiere Global Services",
-        url: null
+        url: "https://www.siris.com/news/siris-capital-agrees-to-acquire-premiere-global-services-for-approximately-1-billion"
       }
     ],
     title: "Web Developer",
